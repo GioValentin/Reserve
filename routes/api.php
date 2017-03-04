@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'reservation'],function(){
 
-	Route::post('/','ReservationController@create');
+	Route::post('/{company}/{entity}','ReservationController@create');
 	Route::put('/{company}/{entity}/{reservation}', 'ReservationController@update');
 	Route::get('/{company}/{entity}/{reservation}','ReservationController@get');
 	Route::delete('/{company}/{entity}/{reservation}','ReservationController@delete');
