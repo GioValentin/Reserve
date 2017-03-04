@@ -10,7 +10,7 @@ class Entity extends Model
     protected $fillable = array('title','description','company');
 
     public function company() {
-    	return $this->belongsTo('App\Company', 'company','id');
+    	return $this->belongsTo('App\Company','company','id');
     }
 
     public function reservations() {
