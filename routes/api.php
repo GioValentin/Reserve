@@ -31,6 +31,8 @@ Route::group(['prefix' => 'company'], function(){
 	// Manage Entites
 	Route::group(['prefix' => 'entity'], function(){
 		Route::post('/', 'EntityController@create');
+		Route::post('/option', 'EntityController@addOption');
+		Route::put('/option/{id}', 'EntityController@updateOption');
 		Route::put('/{id}', 'EntityController@update');
 
 		Route::get('/{id}', 'EntityController@get');
