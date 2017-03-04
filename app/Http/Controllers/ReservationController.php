@@ -57,7 +57,8 @@ class ReservationController extends Controller
 
         if(!$reservation->conflict()){
 
-        	$reservation->save();
+        	$reservation->convertDatesToCarbon()
+        		->save();
 
         	return response($reservation->toJson(), 200)
 				->header('Content-Type', 'text/json');

@@ -38,7 +38,18 @@ class Reservation extends Model
     			return true;
     		}
     	}
+    }
 
+    public function availability(){
+    	return;
+    }
+
+    public function unavailable() {
+    	return $this;
+    }
+
+    public function reserved() {
+    	return $this;
     }
 
     public function checkInRange($start_date, $end_date, $date_from_user)
@@ -47,7 +58,12 @@ class Reservation extends Model
 	  $start_ts = strtotime($start_date);
 	  $end_ts = strtotime($end_date);
 	  $user_ts = strtotime($date_from_user);
-	  
+
 	  return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+	}
+
+	public function convertDatesToCarbon() {
+
+		return $this;
 	}
 }
