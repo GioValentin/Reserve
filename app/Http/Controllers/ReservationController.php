@@ -52,15 +52,24 @@ class ReservationController extends Controller
     			->header('Content-Type', 'text/json');
 		}
 
-        $reservation = new Reservation($request->all());
-
         $reservation->company = $company;
         $reservation->entity = $entity;
 
-		$reservation->save();
+        if(!$reservation->conflict()){
 
-		return response($reservation->toJson(), 200)
-			->header('Content-Type', 'text/json');
+        	$reservation->save();
+
+        	return response($reservation->toJson(), 200)
+				->header('Content-Type', 'text/json');
+        } else {
+        	return response(json_encode(array('Time conflict')), 400)
+				->header('Content-Type', 'text/json');
+        }
+
+    }
+
+    public function getAvaiablilty(Request $request) {
+
     }
 
     public function update(Request $request) {
