@@ -54,7 +54,6 @@ class Reservation extends Model
 
     public function checkInRange($start_date, $end_date, $date_from_user)
 	{	
-
 	  $start_ts = strtotime($start_date);
 	  $end_ts = strtotime($end_date);
 	  $user_ts = strtotime($date_from_user);
